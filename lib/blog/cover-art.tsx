@@ -49,6 +49,77 @@ export function BlogCoverFrame({
   )
 }
 
+export function EmailSupportCover({ logoSrc }: { logoSrc: string }) {
+  return (
+    <BlogCoverFrame
+      logoSrc={logoSrc}
+      caption="Email support, with the whole conversation attached."
+      backgroundImage="radial-gradient(ellipse at 12% 90%, #dfd0ee 0%, rgba(223,208,238,0) 64%), radial-gradient(ellipse at 100% 0%, #b9e0e5 0%, rgba(185,224,229,0) 68%), linear-gradient(155deg, #faf4e8, #f6f2f9)"
+    >
+      <div style={{ position: 'absolute', left: 78, top: 139, width: 1044, display: 'flex', justifyContent: 'center', gap: 16, fontSize: 62, letterSpacing: -2 }}>
+        <span>From inbox to</span><span style={{ color: '#168193' }}>answered.</span>
+      </div>
+      <div style={{ position: 'absolute', left: 78, top: 225, width: 1044, display: 'flex', justifyContent: 'center', fontSize: 23, color: '#496575' }}>Every message. One place to follow through.</div>
+      <svg width="286" height="194" viewBox="0 0 286 194" style={{ position: 'absolute', left: 243, top: 323, transform: 'rotate(-7deg)' }}>
+        <rect x="8" y="12" width="270" height="170" rx="20" fill="#082e50" />
+        <path d="M12 21L133 110Q143 118 153 110L274 21" fill="#dceff0" stroke="#082e50" strokeWidth="4" strokeLinejoin="round" />
+        <path d="M16 172L101 98M270 172L185 98" fill="none" stroke="#315e81" strokeWidth="3" strokeLinecap="round" />
+      </svg>
+      <svg width="138" height="52" viewBox="0 0 138 52" style={{ position: 'absolute', left: 558, top: 388 }}>
+        <path d="M5 26H127M115 14L127 26L115 38" fill="none" stroke={coverPalette.teal} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+      <div style={{ position: 'absolute', left: 731, top: 315, display: 'flex', flexDirection: 'column', width: 296, height: 206, padding: 25, borderRadius: 20, background: '#fffffff2', border: '2px solid white', boxShadow: '0 14px 30px #082e500d', transform: 'rotate(5deg)' }}>
+        <span style={{ fontSize: 26 }}>Reply ready</span>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 11, marginTop: 23 }}>
+          <div style={{ width: 238, height: 8, borderRadius: 4, background: '#b9e0e5' }} />
+          <div style={{ width: 198, height: 8, borderRadius: 4, background: '#dceff0' }} />
+          <div style={{ width: 146, height: 8, borderRadius: 4, background: '#dceff0' }} />
+        </div>
+        <span style={{ fontSize: 16, color: coverPalette.muted, marginTop: 23 }}>Same conversation.</span>
+      </div>
+      <div style={{ position: 'absolute', left: 988, top: 297, display: 'flex', justifyContent: 'center', alignItems: 'center', width: 58, height: 58, borderRadius: '50%', background: coverPalette.teal, border: '4px solid #eef7f7' }}>
+        <svg width="27" height="27" viewBox="0 0 27 27"><path d="M4 13L10 19L23 6" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" /></svg>
+      </div>
+    </BlogCoverFrame>
+  )
+}
+
+export function DiscourseSupportCover({ logoSrc }: { logoSrc: string }) {
+  return (
+    <BlogCoverFrame
+      logoSrc={logoSrc}
+      caption="Bring your knowledge into every new Discourse topic."
+      backgroundImage="radial-gradient(ellipse at 84% 24%, #d8c7f2 0%, rgba(216,199,242,0) 70%), radial-gradient(ellipse at 0% 100%, #b9e0e5 0%, rgba(185,224,229,0) 60%), linear-gradient(125deg, #faf4e8, #f3eef9)"
+    >
+      <div style={{ position: 'absolute', left: 78, top: 217, display: 'flex', flexDirection: 'column', fontSize: 56, lineHeight: 1.12, letterSpacing: -2 }}>
+        <span>Old questions.</span>
+        <span style={{ color: '#168193' }}>Fresh answers.</span>
+      </div>
+      <div style={{ position: 'absolute', left: 80, top: 372, display: 'flex', flexDirection: 'column', gap: 6, fontSize: 22, color: '#496575' }}>
+        <span>Your knowledge, back</span><span>in the conversation.</span>
+      </div>
+      <div style={{ position: 'absolute', left: 706, top: 157, width: 332, height: 195, display: 'flex', flexDirection: 'column', padding: 24, gap: 14, borderRadius: 18, background: '#eee5f8', border: '2px solid #ffffffbb', transform: 'rotate(9deg)' }}>
+        <span style={{ fontSize: 21, color: '#496575' }}>Setup guide</span>
+        <div style={{ height: 7, width: 245, background: '#d2c2e8', borderRadius: 4 }} />
+        <div style={{ height: 7, width: 185, background: '#d2c2e8', borderRadius: 4 }} />
+      </div>
+      <div style={{ position: 'absolute', left: 644, top: 229, width: 332, height: 183, display: 'flex', flexDirection: 'column', padding: 24, gap: 14, borderRadius: 18, background: '#f7f3fc', border: '2px solid white', transform: 'rotate(-7deg)' }}>
+        <span style={{ fontSize: 21 }}>Past discussions</span>
+        <div style={{ height: 7, width: 243, background: '#dce2e9', borderRadius: 4 }} />
+        <div style={{ height: 7, width: 173, background: '#dce2e9', borderRadius: 4 }} />
+      </div>
+      <div style={{ position: 'absolute', left: 687, top: 342, width: 410, height: 180, display: 'flex', flexDirection: 'column', padding: 25, borderRadius: 20, background: '#fffffff5', border: '2px solid white', boxShadow: '0 16px 36px #082e5012' }}>
+        <span style={{ fontSize: 16, color: coverPalette.muted, marginBottom: 12 }}>A new topic in Discourse</span>
+        <span style={{ fontSize: 26 }}>How do I set this up?</span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginTop: 23, paddingTop: 17, borderTop: '1px solid #dce2e9' }}>
+          <svg width="21" height="21" viewBox="0 0 24 24"><path d="M4 12L9 17L21 5" fill="none" stroke={coverPalette.teal} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
+          <span style={{ color: '#168193', fontSize: 19 }}>Answered from your knowledge</span>
+        </div>
+      </div>
+    </BlogCoverFrame>
+  )
+}
+
 export function DiscordSupportCover({ logoSrc }: { logoSrc: string }) {
   return (
     <BlogCoverFrame
