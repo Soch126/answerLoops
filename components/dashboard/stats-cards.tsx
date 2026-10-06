@@ -52,6 +52,7 @@ export function StatsCards({ total, open, inProgress, resolved, slaBreaches, pen
     },
     {
       label: 'In Progress',
+      href: '/tickets?status=in_progress',
       display: String(inProgress),
       icon: (
         <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -62,6 +63,7 @@ export function StatsCards({ total, open, inProgress, resolved, slaBreaches, pen
     },
     {
       label: 'Resolved',
+      href: '/tickets?status=resolved',
       display: String(resolved),
       icon: (
         <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
