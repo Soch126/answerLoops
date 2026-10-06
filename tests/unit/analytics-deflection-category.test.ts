@@ -1,14 +1,11 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest'
 
-// Issue #184: bug and feature-request tickets are never KB-deflectable — runAIAgent skips the
-// confidence grader for them entirely, so they never earn an ai_assessments
-// row. Before this fix, getDeflectionStats/getDeflectionTrend still counted
-// every bug ticket in the "total tickets" denominator, so an org that
-// correctly declined to auto-answer a wave of bug reports would see its
-// deflection rate drop for doing the right thing. This test runs the real
-// query builders (via drizzle's pg-proxy driver, no live Postgres needed) and
-// asserts the emitted SQL excludes category IN ('bug', 'feature_request') from every sub-query that
-// feeds the denominator or numerator.
+// Issue #184 established the bug exclusion. Feature requests also bypass the
+// confidence grader and receive a review-oriented acknowledgement or workaround,
+// so they should not affect the metric for successful knowledge-base deflection.
+// This test runs the real query builders (via drizzle's pg-proxy driver, no live
+// Postgres needed) and asserts the emitted SQL excludes both categories from
+// every sub-query that feeds the denominator or numerator.
 
 type Call = { sql: string; params: unknown[] }
 const { calls } = vi.hoisted(() => ({ calls: [] as Call[] }))
