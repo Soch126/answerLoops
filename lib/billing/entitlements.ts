@@ -14,8 +14,8 @@ export type Feature =
   | 'csv_export'
   | 'white_label_widget'
 
-const STANDARD_FEATURES: Feature[] = ['discord_integration', 'slack_integration', 'google_chat_integration', 'discourse_integration', 'circle_integration', 'csv_export', 'white_label_widget']
-const PRO_FEATURES: Feature[] = [...STANDARD_FEATURES, 'csat_scoring', 'human_escalation', 'simulation', 'knowledge_gap_dashboard']
+const STANDARD_FEATURES: Feature[] = ['discord_integration', 'slack_integration', 'google_chat_integration', 'discourse_integration', 'circle_integration', 'csv_export']
+const PRO_FEATURES: Feature[] = [...STANDARD_FEATURES, 'white_label_widget', 'csat_scoring', 'human_escalation', 'simulation', 'knowledge_gap_dashboard']
 const ENTERPRISE_FEATURES: Feature[] = [...PRO_FEATURES, 'custom_ai_model_config']
 
 const FEATURES_BY_PLAN: Record<PlanId, Feature[]> = {
@@ -63,7 +63,7 @@ const RATE_LIMIT_PER_MINUTE: Record<PlanId, number> = {
   standard: 50,
   pro: 150,
   // Deliberately held at 300, not the researched 600, until the load-test
-  // roadmap item verifies the Neon/Railway setup under real concurrency —
+  // roadmap item verifies the managed-Postgres/Railway setup under real concurrency —
   // see the Roadmap page's "Load test /api/mcp and /api/agent/*" item
   // (2026-07-29). Revisit once that lands.
   enterprise: 300,
