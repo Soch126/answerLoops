@@ -23,15 +23,26 @@ describe('StatsCards', () => {
     expect(link).toHaveAttribute('href', '/tickets?status=open')
     expect(within(link).getByText('Open')).toBeVisible()
     expect(within(link).getByText(String(open))).toBeVisible()
-    expect(screen.getAllByRole('link')).toHaveLength(1)
   })
 
-  it('keeps all other metrics noninteractive and out of the tab order', async () => {
+  it.each([
+    ['In Progress', 8, '/tickets?status=in_progress'],
+    ['Resolved', 30, '/tickets?status=resolved'],
+  ])('links the entire %s card to its filtered tickets', (label, count, href) => {
+    render(<StatsCards {...stats} />)
+
+    const link = screen.getByRole('link', { name: new RegExp(`^${label}\\s+${count}$`) })
+    expect(link).toHaveAttribute('href', href)
+    expect(within(link).getByText(label)).toBeVisible()
+    expect(within(link).getByText(String(count))).toBeVisible()
+  })
+
+  it('links only Open, In Progress and Resolved, and keeps all other metrics noninteractive and out of the tab order', async () => {
     const user = userEvent.setup()
     render(<StatsCards {...stats} />)
 
     for (const label of [
-      'Auto-Answered', 'Deflection Rate', 'In Progress', 'Resolved',
+      'Auto-Answered', 'Deflection Rate',
       'Needs Review', 'AI Drafts Pending', 'SLA Breaches',
     ]) {
       const metric = screen.getByText(label)
@@ -39,10 +50,14 @@ describe('StatsCards', () => {
       expect(metric.closest('a, button, [role="link"], [role="button"], [tabindex]')).toBeNull()
     }
     expect(screen.queryByRole('button')).not.toBeInTheDocument()
-    expect(screen.getAllByRole('link')).toHaveLength(1)
+    expect(screen.getAllByRole('link')).toHaveLength(3)
 
     await user.tab()
     expect(screen.getByRole('link', { name: /^Open\s+12$/ })).toHaveFocus()
+    await user.tab()
+    expect(screen.getByRole('link', { name: /^In Progress\s+8$/ })).toHaveFocus()
+    await user.tab()
+    expect(screen.getByRole('link', { name: /^Resolved\s+30$/ })).toHaveFocus()
     await user.tab()
     expect(document.body).toHaveFocus()
   })
