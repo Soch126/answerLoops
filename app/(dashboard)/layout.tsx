@@ -18,6 +18,7 @@ import { orgHasAIKey } from '@/lib/db/queries/ai-config'
 import { getPlatformKeyTrialStatus } from '@/lib/billing/platform-key-trial'
 import { listIntegrations } from '@/lib/db/queries/integrations'
 import { getRepos } from '@/lib/db/queries/github'
+import { MARKETING_URL } from '@/lib/site'
 
 const PLATFORM_LABEL: Record<string, string> = {
   discord: 'Discord',
@@ -100,7 +101,7 @@ export default async function DashboardLayout({ children }: { children: React.Re
               flex child left, justify-between degenerates to flex-start and
               this cluster would collapse to the header's left edge. */}
           <div className="flex items-center gap-3 ml-auto">
-            <Link href="/" className="flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-500 transition hover:border-blue-200 hover:text-blue-700">
+            <Link href={MARKETING_URL} className="flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-500 transition hover:border-blue-200 hover:text-blue-700">
               <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="m15 18-6-6 6-6"/>
               </svg>
