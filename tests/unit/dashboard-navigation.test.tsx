@@ -24,7 +24,8 @@ describe('dashboard navigation', () => {
       expect(screen.getByText(group)).toBeInTheDocument()
     }
     expect(screen.getByRole('link', { name: /Dashboard/ })).toHaveAttribute('aria-current', 'page')
-    expect(screen.getByText('All systems operational')).toBeInTheDocument()
+    // The sidebar must not claim a system status it does not actually check.
+    expect(screen.queryByText('All systems operational')).not.toBeInTheDocument()
   })
 
   it('keeps the parent ticket destination active on detail routes', () => {
