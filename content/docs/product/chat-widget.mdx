@@ -24,6 +24,10 @@ The answerLoops chat widget adds a support chatbot to any website or documentati
 
 Add the website or documentation domain to **Settings → Widget → Allowed domains**, as described below. The chat bubble appears at the bottom right of pages where you install the snippet. Visitors select it to open the chat panel.
 
+## Branding
+
+On the Standard plan the widget shows the answerLoops logo and a "Powered by answerLoops" line. The Pro and Enterprise plans can remove the answerLoops branding. **Settings → Widget** shows an upgrade option when your plan does not include it. Self-hosted installs have it unlocked.
+
 ## Adding it by platform
 
 Where you paste the snippet depends on how your site is built. Find your platform below.
@@ -145,6 +149,20 @@ Tokens expire after **90 days**. Settings warns you as the date approaches, and 
   Regenerating takes effect immediately and invalidates the old token. Every page still using the old snippet stops working until you update it. Rotate when you are able to update your site, not before.
 </Warning>
 
+## Rich answer cards
+
+Besides text, the assistant can answer with a small set of prebuilt cards when one is clearer than a paragraph:
+
+- **Steps** — a numbered how-to for setup and troubleshooting sequences.
+- **Quick replies** — tappable options when a question is ambiguous. Tapping one sends it as the visitor's next message.
+- **Callout** — a highlighted tip, warning or confirmation.
+- **Link card** — a card pointing to a page from your knowledge base.
+- **Contact options** — email, phone or support-page buttons when a visitor needs a person.
+
+The assistant only fills in the content of these cards; it never produces markup or code, and the widget draws every card with its own components, so cards match the widget's look and work on mobile. Links and contact details only appear in a card when they are written in your knowledge base articles — the assistant can't invent a URL, email address or phone number. Links must be `https`, and they open in a new tab. If a card's content doesn't pass those checks, the widget shows nothing for it and the text answer stands on its own.
+
+To get contact or link cards, put the addresses and URLs you want visitors to see in your knowledge base articles. There is nothing to configure.
+
 ## Rate limits & input caps
 
 The widget chat endpoint is public (no login required), so it enforces limits to protect your AI provider bill from abuse:
@@ -161,5 +179,7 @@ Requests over these limits return `429 Too Many Requests`. Limits are enforced a
 ## What the widget can and cannot reach
 
 It answers from your **knowledge base** — published articles only. It does not read your ticket queue, and it has no access to settings, billing, or team data either; the embed token grants none of those.
+
+To see exactly which articles it can answer from, and to test a question, open **Knowledge Base → Knowledge coverage** (also linked from **Settings → Widget**).
 
 Treat knowledge base contents as visible to anyone who can use the widget. If you have ingested internal documentation, review it before making the widget public.
